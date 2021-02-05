@@ -5,10 +5,14 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 
 import { Provider } from 'react-redux'
+import ReduxThunk from 'redux-thunk'
 import { configureStore } from '@reduxjs/toolkit'
 import { counterSlice } from './feature/counter'
 
-const store = configureStore({ reducer: counterSlice.reducer })
+const store = configureStore({
+  reducer: counterSlice.reducer,
+  middleware: [ReduxThunk],
+})
 
 ReactDOM.render(
   <React.StrictMode>
