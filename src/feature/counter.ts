@@ -7,10 +7,10 @@ const initialState: CounterState = { count: 10 }
 
 export const randomIncremented = createAsyncThunk<
   number,
-  undefined,
+  number,
   { state: CounterState }
->(`${FEATURE}/randomIncremented`, async () => {
-  const yo = await dummyFetch(3)
+>(`${FEATURE}/randomIncremented`, async (num) => {
+  const yo = await dummyFetch(num)
   return yo
 })
 

@@ -12,7 +12,7 @@ const App = () => {
       <button onClick={() => dispatch(incremented())}>+</button>
       <button onClick={() => dispatch(decremented())}>-</button>
       <button onClick={() => dispatch(added(10))}>+10</button>
-      <button onClick={() => dispatch(randomIncremented())}>+???</button>
+      <button onClick={() => dispatch(randomIncremented(4))}>+???</button>
     </div>
   )
 }
