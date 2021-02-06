@@ -1,8 +1,17 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { dummyFetch } from '../api/number'
 
 export type CounterState = { count: number }
 const initialState: CounterState = { count: 10 }
 
+export const randomIncremented = createAsyncThunk<
+  number,
+  undefined,
+  { state: CounterState }
+>('counter/randomIncremented', async () => {
+  const yo = await dummyFetch(3)
+  return yo
+})
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -14,5 +23,11 @@ export const counterSlice = createSlice({
       ...state,
       count: state.count + action.payload,
     }),
+  },
+  extraReducers: (builder) => {
+    builder.addCase(randomIncremented.fulfilled, (state, action) => ({
+      ...state,
+      count: state.count + action.payload,
+    }))
   },
 })
