@@ -1,16 +1,8 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type CounterState = { count: number }
 const initialState: CounterState = { count: 10 }
 
-const fetchUserById = createAsyncThunk<any, { userId: string }, any>(
-  'fetchUserById',
-  async (arg, thunkAPI) => {
-    const res = await fetch(
-      `https://api.github.com/users/${encodeURIComponent(arg.userId)}`
-    )
-  }
-)
 
 export const counterSlice = createSlice({
   name: 'counter',
